@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
 
@@ -12,9 +20,7 @@
     <nav class="navbar">
         <div class="logo">NIHAAL M</div>
 
-        <div class="menu-toggle" id="menu-toggle">
-            ☰
-        </div>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
 
         <ul class="nav-links" id="nav-links">
             <li><a href="#about">About</a></li>
@@ -33,7 +39,6 @@
     <!-- About -->
     <section id="about">
         <div class="about-content">
-
             <div class="about-text">
                 <h2>About Me</h2>
                 <p>
@@ -46,7 +51,6 @@
             <div class="about-image">
                 <img src="https://cdn.pixabay.com/photo/2024/10/03/12/38/lake-9093587_1280.png" alt="My Photo">
             </div>
-
         </div>
     </section>
 
@@ -55,28 +59,20 @@
         <h2>Projects</h2>
 
         <div class="project-list">
-
             <div class="project-card">
                 <h3>DasGuess</h3>
-                <p>
-                    A fun word guessing game that tests vocabulary and problem-solving skills.
-                </p>
+                <p>A fun word guessing game that tests vocabulary and problem-solving skills.</p>
             </div>
 
             <div class="project-card">
                 <h3>YumMe</h3>
-                <p>
-                    A terminal-based food delivery application for seamless order management.
-                </p>
+                <p>A terminal-based food delivery application for seamless order management.</p>
             </div>
 
             <div class="project-card">
                 <h3>MediCab</h3>
-                <p>
-                    A medical assistance device aimed at enhancing patient support and healthcare accessibility.
-                </p>
+                <p>A medical assistance device aimed at enhancing patient support and healthcare accessibility.</p>
             </div>
-
         </div>
     </section>
 
@@ -96,9 +92,12 @@
 
     <!-- Contact -->
     <section id="contact">
-        <h2>Contact</h2>
+    <h2>Contact Me</h2>
 
+    <div class="contact-container">
         <form id="contactForm">
+
+            <label for="name">Name</label>
             <input
                 type="text"
                 id="name"
@@ -106,6 +105,7 @@
                 required
             >
 
+            <label for="email">Email</label>
             <input
                 type="email"
                 id="email"
@@ -113,19 +113,21 @@
                 required
             >
 
-            <button type="submit">Send</button>
+            <button type="submit" class="contact-btn">
+                Send Message
+            </button>
+
         </form>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 My Portfolio.</p>
+        <div id="react-root"></div>
     </footer>
 
     <script>
-
-        // Mobile Navbar Toggle
-
         const toggleBtn = document.getElementById("menu-toggle");
         const navLinks = document.getElementById("nav-links");
 
@@ -133,23 +135,45 @@
             navLinks.classList.toggle("active");
         });
 
-        // Contact Form Alert
-
-        document.getElementById("contactForm")
-            .addEventListener("submit", function (e) {
-
-                e.preventDefault();
-
-                const name = document.getElementById("name").value;
-                const email = document.getElementById("email").value;
-
-                alert(
-                    `Details Submitted Successfully!\n\nName: ${name}\nEmail: ${email}`
-                );
-
-                this.reset();
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
             });
+        });
 
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+
+            alert(`Details Submitted Successfully!\n\nName: ${name}\nEmail: ${email}`);
+
+            this.reset();
+        });
+    </script>
+
+    <script type="text/babel">
+        function ReactDemo() {
+            const [count, setCount] = React.useState(0);
+
+            return (
+                <div className="mt-4 inline-flex flex-col items-center gap-2 rounded-xl bg-blue-50 px-4 py-3 shadow-sm">
+                    <p className="text-sm font-medium text-blue-900">
+                        React component added successfully
+                    </p>
+
+                    <button
+                        onClick={() => setCount(count + 1)}
+                        className="rounded-md bg-blue-700 px-4 py-2 text-white shadow-md transition hover:bg-blue-800"
+                    >
+                        React Clicks: {count}
+                    </button>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("react-root")).render(<ReactDemo />);
     </script>
 
 </body>
