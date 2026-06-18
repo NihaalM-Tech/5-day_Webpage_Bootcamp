@@ -162,63 +162,97 @@ section h2 {
 
 /* Contact Section */
 
-.contact-container{
-    max-width:600px;
-    margin:20px auto 0;
+.contact-container {
+    max-width: 600px;
+    margin: 25px auto 0;
 }
 
-#contact form{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
+#contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
-#contact label{
-    font-weight:600;
-    color:#1f3c88;
+#contact label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f3c88;
+    margin-bottom: -8px;
 }
 
-#contact input{
-    width:100%;
-    padding: 14px;
-    border:1px solid #d0d7e2;
-    border-radius:8px;
-    font-size:1rem;
-    transition:0.3s;
+#contact input {
+    width: 100%;
+    padding: 15px 18px;
+    font-size: 1rem;
+
+    border: 2px solid transparent;
+    border-radius: 12px;
+
+    background: #f8f9fc;
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-#contact input:focus{
-    outline:none;
-    border-color:#1f3c88;
-    box-shadow:0 0 8px rgba(31,60,136,0.2);
+#contact input::placeholder {
+    color: #9ca3af;
 }
 
-.contact-btn{
-    width:fit-content;
-    align-self:center;
-
-    background:#1f3c88;
-    color:white;
-
-    padding:12px 30px;
-
-    border:none;
-    border-radius:8px;
-
-    cursor:pointer;
-    font-size:1rem;
-    font-weight:600;
-
-    transition:all 0.3s ease;
+#contact input:hover {
+    background: #ffffff;
 }
 
-.contact-btn:hover{
-    background:#16306d;
-    transform:translateY(-2px);
+#contact input:focus {
+    outline: none;
+
+    background: #ffffff;
+
+    border-color: #1f3c88;
+
+    box-shadow:
+        0 0 0 4px rgba(31,60,136,0.12),
+        0 4px 15px rgba(0,0,0,0.08);
 }
 
-.contact-btn:active{
-    transform:translateY(0);
+/* Button */
+
+.contact-btn {
+    align-self: center;
+
+    margin-top: 10px;
+
+    padding: 14px 35px;
+
+    background: linear-gradient(
+        135deg,
+        #1f3c88,
+        #2d56c4
+    );
+
+    color: white;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 4px 15px rgba(31,60,136,0.25);
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 20px rgba(31,60,136,0.35);
+}
+
+.contact-btn:active {
+    transform: translateY(0);
 }
 
 /* Footer */
